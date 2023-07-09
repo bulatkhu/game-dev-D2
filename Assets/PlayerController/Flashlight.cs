@@ -19,9 +19,9 @@ public class Flashlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        audioSource.clip = flashlightSound;
         if (Input.GetKeyDown(KeyCode.F))
         {
+            audioSource.clip = flashlightSound;
             if (IsOn == false)
             {
                 Light.gameObject.SetActive(true);
