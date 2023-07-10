@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,10 +7,17 @@ public class SpawnScript : MonoBehaviour
     public GameObject[] cubePrefabs;
     public GameObject spherePrefab;
     public float forceMagnitude = 25f; // Adjust this value as needed
+    [SerializeField] public int currentCubeIndex = 0;
 
-    [SerializeField]
-    public int currentCubeIndex = 0;
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip sphereSpawnAudioClip;
+    [SerializeField] private AudioClip cubeSpawnAudioClip;
     
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -17,11 +25,13 @@ public class SpawnScript : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            audioSource.PlayOneShot(sphereSpawnAudioClip);
             Instantiate(cubePrefabs[currentCubeIndex], transform.position, Quaternion.identity);
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
+            audioSource.PlayOneShot(cubeSpawnAudioClip);
             GameObject sphere = Instantiate(spherePrefab, transform.position, Quaternion.identity);
             Rigidbody sphereRigidbody = sphere.GetComponent<Rigidbody>();
             // Apply a forward force to the sphere
