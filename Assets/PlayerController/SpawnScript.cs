@@ -107,11 +107,23 @@ public class SpawnScript : MonoBehaviour
         {
             if (i == currentCubeIndex)
             {
-                cubeIcons[i].color = Color.yellow; // Highlight the selected cube
+                Outline outline = cubeIcons[i].GetComponent<Outline>();
+                if(outline != null)
+                {
+                    // Set the new color
+                    outline.effectColor = new Color(0, 0, 0, 1);
+                }
+                // cubeIcons[i].color = Color.yellow; // Highlight the selected cube
             }
             else
             {
-                cubeIcons[i].color = Color.white; // Reset the color for non-selected cubes
+                Outline outline = cubeIcons[i].GetComponent<Outline>();
+                if(outline != null)
+                {
+                    // Set the new color
+                    outline.effectColor = new Color(0, 0, 0, 0);
+                }
+                // cubeIcons[i].color = Color.white; // Reset the color for non-selected cubes
             }
         }
     }
