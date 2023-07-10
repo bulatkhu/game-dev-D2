@@ -21,19 +21,17 @@ public class Flashlight : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            audioSource.clip = flashlightSound;
             if (IsOn == false)
             {
                 Light.gameObject.SetActive(true);
                 IsOn = true;
-                audioSource.Play();
             }
             else 
             {
                 Light.gameObject.SetActive(false);
                 IsOn = false;
-                audioSource.Play();
             }
+            audioSource.PlayOneShot(flashlightSound);
         }
     }
 }
