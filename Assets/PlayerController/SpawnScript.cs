@@ -71,6 +71,7 @@ public class SpawnScript : MonoBehaviour
                     // If we hit a cube, pick it up
                     if (hit.transform.gameObject.CompareTag("Cube")) // Make sure your cubes are tagged appropriately in Unity
                     {
+                        audioSource.PlayOneShot(sphereSpawnAudioClip);
                         heldCube = hit.transform.gameObject;
                         Rigidbody cubeRigidbody = heldCube.GetComponent<Rigidbody>();
                         cubeRigidbody.isKinematic = true; // Disable physics
