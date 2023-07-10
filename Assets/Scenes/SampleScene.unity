@@ -1935,8 +1935,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3976c79acbcd894d96f2f6fd6a33d01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubePrefab: {fileID: 8814982322142614746, guid: 230319e46f96e6a46bef999ddfaa78f8,
-    type: 3}
+  cubePrefabs:
+  - {fileID: 8814982322142614746, guid: 230319e46f96e6a46bef999ddfaa78f8, type: 3}
+  - {fileID: 8814982322142614746, guid: 1c3876933465bd9459e7c5cc816ccd82, type: 3}
+  - {fileID: 8814982322142614746, guid: a03a57ff11738b14aadefe1049d1974a, type: 3}
+  - {fileID: 8814982322142614746, guid: 6e24005cc0c06d040b501f620fc857fb, type: 3}
+  - {fileID: 8814982322142614746, guid: 5d255c4840525e244b0ee8621cd8515d, type: 3}
 --- !u!1001 &1386824845
 PrefabInstance:
   m_ObjectHideFlags: 0
