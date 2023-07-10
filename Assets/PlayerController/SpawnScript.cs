@@ -13,6 +13,9 @@ public class SpawnScript : MonoBehaviour
     [SerializeField] private AudioClip sphereSpawnAudioClip;
     [SerializeField] private AudioClip cubeSpawnAudioClip;
     [SerializeField] private AudioClip selectCubeTypeAudioClip;
+
+    private GameObject heldCube = null;
+    private bool isHoldingCube = false;
     
     private void Start()
     {
@@ -24,12 +27,7 @@ public class SpawnScript : MonoBehaviour
     {
         HandleCurrentIndex();
         HandleCubeIcons();
-        
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            audioSource.PlayOneShot(sphereSpawnAudioClip);
-            Instantiate(cubePrefabs[currentCubeIndex], transform.position, Quaternion.identity);
-        }
+        HandleCubeSpawning();
 
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
@@ -41,6 +39,64 @@ public class SpawnScript : MonoBehaviour
             Vector3 force = forceDirection * forceMagnitude;
             sphereRigidbody.AddForce(force, ForceMode.Impulse);
         }
+    }
+
+    private void HandleCubeSpawning()
+    {
+        // If we're holding a cube, keep it in front of the player
+        if(isHoldingCube)
+        {
+            heldCube.transform.position = transform.position + transform.forward * 2;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Mouse0) && isHoldingCube)
+        {
+            DropTheCube();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            // If we're currently holding a cube
+            if(isHoldingCube)
+            {
+                DropTheCube();
+            }
+            // Otherwise, spawn or pick up a cube
+            else
+            {
+                // Raycast forward from the player's position
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, transform.forward, out hit, 5f)) // Adjust distance as needed
+                {
+                    // If we hit a cube, pick it up
+                    if (hit.transform.gameObject.tag == "Cube") // Make sure your cubes are tagged appropriately in Unity
+                    {
+                        heldCube = hit.transform.gameObject;
+                        Rigidbody cubeRigidbody = heldCube.GetComponent<Rigidbody>();
+                        cubeRigidbody.isKinematic = true; // Disable physics
+                        isHoldingCube = true;
+                    }
+                }
+                // If we didn't hit anything, spawn a cube
+                else
+                {
+                    audioSource.PlayOneShot(sphereSpawnAudioClip);
+                    heldCube = Instantiate(cubePrefabs[currentCubeIndex], transform.position + transform.forward * 2, Quaternion.identity); // Spawn the cube 2 units in front of the player
+                    Rigidbody cubeRigidbody = heldCube.GetComponent<Rigidbody>();
+                    cubeRigidbody.isKinematic = true; // Disable physics
+                    isHoldingCube = true;
+                }
+            }
+        }
+    }
+
+    private void DropTheCube()
+    {
+        // Drop the cube
+        Rigidbody cubeRigidbody = heldCube.GetComponent<Rigidbody>();
+        cubeRigidbody.isKinematic = false; // Enable physics
+        heldCube = null; // We're no longer holding a cube
+        isHoldingCube = false;
     }
     
     private void HandleCubeIcons()
