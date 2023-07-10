@@ -935,6 +935,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Light: {fileID: 1120543313}
   flashlightSound: {fileID: 8300000, guid: 676efc2670513e2468257934d32a8b2c, type: 3}
+--- !u!114 &487903378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487903370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d194e7d73d7b86409eddec566c833e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 487903381}
+  collision: {fileID: 8300000, guid: 4f11d438cc93e714abe518a1802a93f6, type: 3}
+--- !u!82 &487903381 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8200000, guid: 17d6ce5c2c68a4c41ac4f6e4462bce2c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1300224503}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &600967170 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 2e66382e216a57b4aa80b30a89d4e25d,
@@ -1945,10 +1965,10 @@ MonoBehaviour:
   spherePrefab: {fileID: 5790831752997051637, guid: fff1769203a28b64287511f9229238ad,
     type: 3}
   forceMagnitude: 50
+  currentCubeIndex: 0
   sphereSpawnAudioClip: {fileID: 8300000, guid: 746b5a126c5d6394f9cf9dbf7306ec3e,
     type: 3}
   cubeSpawnAudioClip: {fileID: 8300000, guid: 6a06d20a29cd806429abe2ce253226ad, type: 3}
-  currentCubeIndex: 0
 --- !u!82 &1373264769
 AudioSource:
   m_ObjectHideFlags: 0
