@@ -1941,6 +1941,10 @@ MonoBehaviour:
   - {fileID: 8814982322142614746, guid: a03a57ff11738b14aadefe1049d1974a, type: 3}
   - {fileID: 8814982322142614746, guid: 6e24005cc0c06d040b501f620fc857fb, type: 3}
   - {fileID: 8814982322142614746, guid: 5d255c4840525e244b0ee8621cd8515d, type: 3}
+  spherePrefab: {fileID: 5790831752997051637, guid: fff1769203a28b64287511f9229238ad,
+    type: 3}
+  forceMagnitude: 50
+  currentCubeIndex: 0
 --- !u!1001 &1386824845
 PrefabInstance:
   m_ObjectHideFlags: 0

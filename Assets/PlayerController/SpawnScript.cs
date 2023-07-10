@@ -4,7 +4,9 @@ using UnityEngine;
 public class SpawnScript : MonoBehaviour
 {
     public GameObject[] cubePrefabs;
-    
+    public GameObject spherePrefab;
+    public float forceMagnitude = 25f; // Adjust this value as needed
+
     [SerializeField]
     public int currentCubeIndex = 0;
     
@@ -20,7 +22,12 @@ public class SpawnScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            Debug.Log("Right mouse click");
+            GameObject sphere = Instantiate(spherePrefab, transform.position, Quaternion.identity);
+            Rigidbody sphereRigidbody = sphere.GetComponent<Rigidbody>();
+            // Apply a forward force to the sphere
+            Vector3 forceDirection = transform.forward; // Use the player's forward direction
+            Vector3 force = forceDirection * forceMagnitude;
+            sphereRigidbody.AddForce(force, ForceMode.Impulse);
         }
     }
 
