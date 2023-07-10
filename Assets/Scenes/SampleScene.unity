@@ -2519,10 +2519,18 @@ MonoBehaviour:
   spherePrefab: {fileID: 5790831752997051637, guid: fff1769203a28b64287511f9229238ad,
     type: 3}
   forceMagnitude: 50
+  cubeIcons:
+  - {fileID: 1312375475}
+  - {fileID: 769446343}
+  - {fileID: 510812059}
+  - {fileID: 2099198820}
+  - {fileID: 1153759313}
   currentCubeIndex: 0
   sphereSpawnAudioClip: {fileID: 8300000, guid: 746b5a126c5d6394f9cf9dbf7306ec3e,
     type: 3}
   cubeSpawnAudioClip: {fileID: 8300000, guid: 6a06d20a29cd806429abe2ce253226ad, type: 3}
+  selectCubeTypeAudioClip: {fileID: 8300000, guid: a8c4e80f1a1490942a95ece8c42355c4,
+    type: 3}
 --- !u!82 &1373264769
 AudioSource:
   m_ObjectHideFlags: 0
