@@ -66,7 +66,7 @@ public class SpawnScript : MonoBehaviour
             {
                 // Raycast forward from the player's position
                 RaycastHit hit;
-                if (Physics.Raycast(transform.position, transform.forward, out hit, 5f)) // Adjust distance as needed
+                if (Physics.Raycast(transform.position, transform.forward, out hit, 2f)) // Adjust distance as needed
                 {
                     // If we hit a cube, pick it up
                     if (hit.transform.gameObject.CompareTag("Cube")) // Make sure your cubes are tagged appropriately in Unity
