@@ -46,7 +46,7 @@ public class SpawnScript : MonoBehaviour
         // If we're holding a cube, keep it in front of the player
         if(isHoldingCube)
         {
-            heldCube.transform.position = transform.position + transform.forward * 2;
+            heldCube.transform.position = transform.position + transform.forward;
         }
 
         if (Input.GetKeyUp(KeyCode.Mouse0) && isHoldingCube)
@@ -82,7 +82,7 @@ public class SpawnScript : MonoBehaviour
                 else
                 {
                     audioSource.PlayOneShot(sphereSpawnAudioClip);
-                    heldCube = Instantiate(cubePrefabs[currentCubeIndex], transform.position + transform.forward * 2, Quaternion.identity); // Spawn the cube 2 units in front of the player
+                    heldCube = Instantiate(cubePrefabs[currentCubeIndex], transform.position + transform.forward, Quaternion.identity); // Spawn the cube 2 units in front of the player
                     Rigidbody cubeRigidbody = heldCube.GetComponent<Rigidbody>();
                     cubeRigidbody.isKinematic = true; // Disable physics
                     isHoldingCube = true;
