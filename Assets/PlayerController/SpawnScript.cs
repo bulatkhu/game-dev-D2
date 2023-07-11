@@ -44,12 +44,17 @@ public class SpawnScript : MonoBehaviour
         }
     }
 
+    private Vector3 CalculateSpawningPosition()
+    {
+        return transform.position + transform.forward;
+    }
+
     private void HandleCubeSpawning()
     {
         // If we're holding a cube, keep it in front of the player
         if(isHoldingCube)
         {
-            heldCube.transform.position = transform.position + transform.forward;
+            heldCube.transform.position = CalculateSpawningPosition();
         }
 
         if (Input.GetKeyUp(KeyCode.Mouse0) && isHoldingCube)
@@ -91,19 +96,19 @@ public class SpawnScript : MonoBehaviour
                         // If a Companion Cube already exists, move it to the player's location
                         if (companionCube != null)
                         {
-                            companionCube.transform.position = transform.position + transform.forward;
+                            companionCube.transform.position = CalculateSpawningPosition();
                             heldCube = companionCube;
                         }
                         // Otherwise, spawn a new Companion Cube
                         else
                         {
-                            companionCube = Instantiate(cubePrefabs[currentCubeIndex], transform.position + transform.forward, Quaternion.identity); // Spawn the cube 2 units in front of the player
+                            companionCube = Instantiate(cubePrefabs[currentCubeIndex], CalculateSpawningPosition(), Quaternion.identity); // Spawn the cube 2 units in front of the player
                             heldCube = companionCube;
                         }
                     }
                     else
                     {
-                        heldCube = Instantiate(cubePrefabs[currentCubeIndex], transform.position + transform.forward, Quaternion.identity); // Spawn the cube 2 units in front of the player
+                        heldCube = Instantiate(cubePrefabs[currentCubeIndex], CalculateSpawningPosition(), Quaternion.identity); // Spawn the cube 2 units in front of the player
                     }
                     Rigidbody cubeRigidbody = heldCube.GetComponent<Rigidbody>();
                     cubeRigidbody.isKinematic = true; // Disable physics
