@@ -414,7 +414,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 17d6ce5c2c68a4c41ac4f6e4462bce2c, type: 3}
       propertyPath: m_Name
-      value: FPSController
+      value: FPSController Variant
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 17d6ce5c2c68a4c41ac4f6e4462bce2c, type: 3}
       propertyPath: m_TagString
@@ -561,6 +561,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 4867840680944379586}
   collision: {fileID: 8300000, guid: 4f11d438cc93e714abe518a1802a93f6, type: 3}
+--- !u!114 &5636822402243002267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4867840680939896610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a6ea4ebeb92c084eb10e20b3dc9b4c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &4867840680944379586 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 8200000, guid: 17d6ce5c2c68a4c41ac4f6e4462bce2c,
