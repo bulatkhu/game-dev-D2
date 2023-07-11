@@ -16,6 +16,9 @@ public class SpawnScript : MonoBehaviour
 
     private GameObject heldCube = null;
     private bool isHoldingCube = false;
+
+    // New variable
+    private GameObject companionCube = null; // Track the current Companion Cube
     
     private void Start()
     {
@@ -82,7 +85,26 @@ public class SpawnScript : MonoBehaviour
                 else
                 {
                     audioSource.PlayOneShot(sphereSpawnAudioClip);
-                    heldCube = Instantiate(cubePrefabs[currentCubeIndex], transform.position + transform.forward, Quaternion.identity); // Spawn the cube 2 units in front of the player
+                    // If the cube to be spawned is a Companion Cube
+                    if (cubePrefabs[currentCubeIndex].name == "CompanionCube") // Adjust this as needed
+                    {
+                        // If a Companion Cube already exists, move it to the player's location
+                        if (companionCube != null)
+                        {
+                            companionCube.transform.position = transform.position + transform.forward;
+                            heldCube = companionCube;
+                        }
+                        // Otherwise, spawn a new Companion Cube
+                        else
+                        {
+                            companionCube = Instantiate(cubePrefabs[currentCubeIndex], transform.position + transform.forward, Quaternion.identity); // Spawn the cube 2 units in front of the player
+                            heldCube = companionCube;
+                        }
+                    }
+                    else
+                    {
+                        heldCube = Instantiate(cubePrefabs[currentCubeIndex], transform.position + transform.forward, Quaternion.identity); // Spawn the cube 2 units in front of the player
+                    }
                     Rigidbody cubeRigidbody = heldCube.GetComponent<Rigidbody>();
                     cubeRigidbody.isKinematic = true; // Disable physics
                     isHoldingCube = true;
