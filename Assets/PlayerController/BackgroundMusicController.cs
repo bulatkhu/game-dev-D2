@@ -10,6 +10,11 @@ public class BackgroundMusicController : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
+            if (audioClip == audioSource.clip)
+            {
+                return;
+            }
+            
             audioSource.clip = audioClip;
             audioSource.Play();
         }
